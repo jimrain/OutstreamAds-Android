@@ -3,7 +3,9 @@
     <string name="account">4517911906001</string>
     <string name="policy">"BCpkADawqM3dCmAPU7-jl0hHWW8097dehsjhdHYeCZVO3HbClNSwbtBpZkhuDuab141BnGkFL_xvPCif9v6Sz5A27pFUo8-qFuq42J6vzrXnLkmeLzGkQ1HzNdow2rI0qmhyPaEEhSGTPpW9"</string>
     <string name="text_item_1">
-        “The new wave of video advertising” is what Teads calls outstream, the game-changing ad format that’s earned overnight notoriety among big-name publishers and well-known marketers.
+        <![CDATA[
+
+“The new wave of video advertising” is what Teads calls outstream, the game-changing ad format that’s earned overnight notoriety among big-name publishers and well-known marketers.
 
 If you haven’t heard a lot about it, you’re not alone. Research released last week shows that two-thirds of brand professionals discovered outstream in the last year. In that same year, eMarketer found that 77% of agencies worldwide said the new format is going to be much more important to their clients’ futures.
 
@@ -16,8 +18,10 @@ An ‘outstream’ video ad unit, also commonly referred to as ‘in-read’ or 
 
 AppNexus
 Here’s an example from In-View of what an outstream video ad looks like. Notice how the ad opens once a viewer scrolls down the page and then pauses once the player is almost out of view:
+]]>
     </string>
     <string name="text_item_2">
+        <![CDATA[
 The rest of the definition varies depending on who you ask. Google says an outstream ad is “typically without sound. Interstitials, Native, and In-Feed are types of outstream video. The okay autoplay silent video on Facebook is a good example of outstream.”
 
 But Mark Book, VP of Digitas Studios, disagrees.“What I do not consider to be outstream are placements within a feed – so Facebook, Instagram and BuzzFeed,” he said. “I would consider this to be pure native in-feed advertising.”
@@ -40,6 +44,7 @@ If ads are not integrated well it can lead to ad blindness, or worse annoyance, 
 
 Paul Muret
 The less-intrusive nature of these ads (you can scroll by them if you want), along with their expanded reach, makes them “far more valuable,” says Bertrand Quesada, CEO of outstream ad marketplace, Teads. “This is going to be as big as pre-roll advertising,” he added.
+]]>
     </string>
     <string name="videoId">5269117590001</string>
 

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Jim Rainville (jrainville@brightcove.com) on 9/25/17.
@@ -24,7 +25,26 @@ public class Article {
     private Article(Context context) {
         mArticleItems = new ArrayList<>();
 
-        ArticleItemText article1 = new ArticleItemText(getString(R.string.text_item_1));
+        ArticleItemText article1 = new ArticleItemText(context.getString(R.string.text_item_1));
+        mArticleItems.add(article1);
 
+        ArticleItemVideo article2 = new ArticleItemVideo(context.getString(R.string.videoId));
+        mArticleItems.add(article2);
+
+        ArticleItemText article3 = new ArticleItemText(context.getString(R.string.text_item_2));
+        mArticleItems.add(article3);
+    }
+
+    public List<ArticleItem> getArticleItems() {
+        return mArticleItems;
+    }
+
+    public ArticleItem getArticleItem(UUID id) {
+        for (ArticleItem articleItem : mArticleItems) {
+            if (articleItem.getArticleId() == id) {
+                return articleItem;
+            }
+        }
+        return null;
     }
 }
