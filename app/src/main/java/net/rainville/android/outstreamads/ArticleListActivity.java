@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ArticleListActivity extends SingleFragmentActivity {
-
-
     @Override
     protected Fragment createFragment() {
         return new ArticleListFragment();
