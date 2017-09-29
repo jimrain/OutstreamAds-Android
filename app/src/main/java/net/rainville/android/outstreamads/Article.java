@@ -41,7 +41,7 @@ public class Article {
 
     public ArticleItem getArticleItem(UUID id) {
         for (ArticleItem articleItem : mArticleItems) {
-            if (articleItem.getArticleId() == id) {
+            if (articleItem.getArticleId().equals(id)) {
                 return articleItem;
             }
         }
