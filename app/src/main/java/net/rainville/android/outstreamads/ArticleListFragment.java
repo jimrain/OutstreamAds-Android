@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
+import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
 
 import java.util.List;
 
@@ -55,14 +58,24 @@ public class ArticleListFragment extends Fragment {
     }
 
     private class TextArticleHolder extends AbstractArticleItemHolder {
+        private TextView mTextView;
+        private ArticleItemText mTexttem;
+
         public TextArticleHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater, parent, R.layout.ariticle_item_text);
+            mTextView = (TextView)itemView.findViewById(R.id.text_view);
+        }
+
+        public void bind(ArticleItemText textItem) {
+            mTexttem = textItem;
+            mTextView.setText((String)mTexttem.getContent());
         }
     }
 
     private class VideoArticleHolder extends AbstractArticleItemHolder {
         public VideoArticleHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater, parent, R.layout.article_item_video);
+            // brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
         }
     }
 
