@@ -1,5 +1,6 @@
 package net.rainville.android.outstreamads;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,9 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.brightcove.player.event.Event;
+import com.brightcove.player.event.EventEmitter;
+import com.brightcove.player.event.EventListener;
+import com.brightcove.player.event.EventType;
+import com.brightcove.player.model.Video;
 import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
+import com.brightcove.player.view.BrightcoveVideoView;
+import com.brightcove.player.model.Video;
 
 import java.util.List;
 
@@ -73,9 +82,27 @@ public class ArticleListFragment extends Fragment {
     }
 
     private class VideoArticleHolder extends AbstractArticleItemHolder {
+        public final Context context;
+        public final TextView videoTitleText;
+        public final FrameLayout videoFrame;
+        public final BrightcoveVideoView videoView;
+
         public VideoArticleHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater, parent, R.layout.article_item_video);
-            // brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
+            context = itemView.getContext();
+            videoFrame = (FrameLayout) itemView.findViewById(R.id.video_frame);
+            videoTitleText = (TextView) itemView.findViewById(R.id.video_title_text);
+            videoView = new BrightcoveExoPlayerVideoView(context);
+            videoFrame.addView(videoView);
+            videoView.finishInitialization();
+
+            EventEmitter eventEmitter = videoView.getEventEmitter();
+            eventEmitter.on(EventType.ENTER_FULL_SCREEN, new EventListener() {
+                @Override
+                public void processEvent(Event event) {
+                    //You can set listeners on each Video View
+                }
+            });
         }
     }
 
@@ -108,7 +135,13 @@ public class ArticleListFragment extends Fragment {
             if (articleItem.getArticleType() == ArticleItem.ARTICLE_TYPE.TEXT) {
                 ((TextArticleHolder)holder).bind(articleItem);
             } else if (articleItem.getArticleType() == ArticleItem.ARTICLE_TYPE.VIDEO) {
-                ((VideoArticleHolder)holder).bind(articleItem);
+                // ((VideoArticleHolder)holder).bind(articleItem);
+                Video video = (Video)articleItem.getContent();
+                VideoArticleHolder vHolder = (VideoArticleHolder)holder;
+                vHolder.videoTitleText.setText(video.getStringProperty(Video.Fields.NAME));
+                BrightcoveVideoView videoView = vHolder.videoView;
+                videoView.clear();
+                videoView.add(video);
             }
         }
 
